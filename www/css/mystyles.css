@@ -1,0 +1,80 @@
+body
+{
+	background-color: #f2f2f2 !important;
+	padding-bottom: 5%;
+}
+.btn
+{
+	margin: 5px;
+}
+
+.btn.btn-primary
+{
+	background-color: #ddd;
+	border: none;
+	color: #444;
+	font-weight: bold;
+	/*padding-left: 20px;
+	padding-right: 20px;*/
+	width:30%;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active:focus,
+.btn.btn-primary:active,
+.btn.btn-primary:focus
+{
+	background-color:#66a3ff;
+}
+
+.btn.btn-primary-blue
+{
+	background-color: #66a3ff;
+	border: none;
+	color: #eee;
+	font-weight: bold;
+	/*padding-left: 20px;
+	padding-right: 20px;*/
+	width:90%;
+
+}
+
+.btn.btn-primary-blue:hover,
+.btn.btn-primary-blue:active:focus,
+.btn.btn-primary-blue:active,
+{
+	background-color:#66a3ff;
+}
+
+.btn-custom-btm-op
+{
+	width: 45%;
+}
+
+.jumbotron.tron-2
+{
+	background-color: transparent;
+}
+
+.jumbotron.tron-body
+{
+	background-color: #ffffff !important;
+}
+
+.jumbotron.tron-body.tron-profile
+{
+	clear:both;
+}
+/*This img-circle sizing is a very ghetto px hack, needs changed */
+.img-circle.img-profile
+{
+	height: 200px;
+	width:200px;
+}
+
+/*-------Ghetto hack above--------*/
+.font-bold
+{
+	font-weight:bold;
+	color: #66a3ff;
+}
