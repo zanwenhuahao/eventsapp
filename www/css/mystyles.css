@@ -1,0 +1,42 @@
+body
+{
+	background-color: #f2f2f2 !important;
+}
+.btn
+{
+	margin: 5px;
+}
+
+.btn.btn-primary
+{
+	background-color: #ddd;
+	border: none;
+	color: #444;
+	font-weight: bold;
+	/*padding-left: 20px;
+	padding-right: 20px;*/
+	width:30%;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active:focus,
+.btn.btn-primary:active,
+.btn.btn-primary:focus
+{
+	background-color:#66a3ff;
+}
+
+.btn-custom-btm-op
+{
+	width: 45%;
+}
+
+.jumbotron.tron-2
+{
+	background-color: transparent;
+}
+
+.jumbotron.tron-body
+{
+	background-color: #ffffff !important;
+}
