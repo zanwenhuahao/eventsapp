@@ -102,9 +102,10 @@ var app = {
                 var userResponse=JSON.parse(req.responseText);
                 //console.log("user " + userResponse);
                 if (userResponse!=null){
-                    //window.localstorage.setItem("user_id",userResponse[0].user_id);
-                    //window.localstorage.setItem("username",userResponse[0].username);
-                    //window.localstorage.setItem("password",userResponse[0].password);
+                    window.localStorage.setItem("user_id",userResponse[0].user_id);
+                    window.localStorage.setItem("username",userResponse[0].username);
+                    window.localStorage.setItem("password",userResponse[0].password);
+                    window.localStorage.setItem("fullname",userResponse[0].firstname + ' ' + userResponse[0].lastname);
                     window.location="landing-events.html";
                 }else{
                     document.getElementById("loginmessage").innerHTML="Invalid username or password!";

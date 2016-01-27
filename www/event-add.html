@@ -61,9 +61,19 @@
 
 
       function init(){
+
+      }
+
+      function addevent(){
           var user_id=window.localStorage.getItem("user_id"); //session data test
           //document.getElementById("namebox").innerHTML=name;
-          var url="http://eventsapp.randomfiles.info/event.asp?action=listeventsbyuser&userid=" + user_id;
+          var name=document.getElementById("name").value;
+          var location=document.getElementById("location").value;
+          var description=document.getElementById("description").value;
+          var start_time=document.getElementById("start_time").value;
+          var end_time=document.getElementById("end_time").value;
+          console.log("add + associate event");
+          var url="http://eventsapp.randomfiles.info/event.asp?action=addeventandassociate&event_name=" + name + "&location=" + location + "&description=" + description + "&start_time=" + start_time + "&end_time=" + end_time + "&userId=" & user_id;
         var req = createCORSRequest("GET",url);
 
         if (!req) {
@@ -80,17 +90,40 @@
         req.onload = function(){
             console.log("Status: " + req.status + " - readyState: " + req.readyState);
             if(req.readyState == 4 && (req.status == 200 || req.status==0)) {
-                console.log("resp: " + req.responseText);
-                var eventsResponse=JSON.parse(req.responseText);
-                for(var i = 0; i < eventsResponse.length; i++) {
-                    document.getElementById("events").innerHTML += 
-                    "<p class=\"lead\">Event: " +  eventsResponse[i].event_name + " <br/> " + eventsResponse[i].start_time + " - " +
-                    eventsResponse[i].end_time + " </p>";
-                }
-
+                console.log("create resp: " + req.responseText);
+                var event_id=req.responseText;
+                doAssociate(user_id,event_id);
             }
         };
         req.send();
+      }
+
+      function doAssociate(user_id,event_id){
+        console.log("associate event u=" + user_id + " e=" + event_id);
+
+          var url2="http://eventsapp.randomfiles.info/event.asp?action=eventuserassociate&userID="+ user_id + "&eventID=" & event_id;
+        var req2 = createCORSRequest("GET",url2);
+
+        if (!req2) {
+            alert('CORS not supported');
+            return;
+        }
+        
+
+        //Send the proper header information along with the request
+        //req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //req.setRequestHeader("Content-length", params.length);
+        //req.setRequestHeader("Connection", "close");
+        
+
+        req2.onload = function(){
+            console.log("Status: " + req2.status + " - readyState: " + req2.readyState);
+            if(req2.readyState == 4 && (req2.status == 200 || req2.status==0)) {
+                console.log("associate resp: " + req2.responseText);
+                window.location="landing-events.html";
+            }
+        };
+        req2.send();
       }
 
     </script>
@@ -127,8 +160,16 @@
     
 	<div class="container">
       <div class="jumbotron tron-2">
-        <h2>My Current Events</h2>
+        <h2>New Event</h2>
 		<div class="jumbotron tron-body" id="events">
+      <form id="eventform">
+        Name: <input type="text" id="name"><br/>
+        Location: <input type="text" id="location"><br/>
+        Description: <input type="text" id="description"><br/>
+        Start time: <input type="text" id="start_time" value="2016-01-27 11:00:00"><br/>
+        End time: <input type="text" id="end_time" value="2016-01-27 12:00:00"><br/>
+        <input type="button" value="Add" onClick="addevent()">
+    </form>
 		</div>
     
       </div>
@@ -136,8 +177,7 @@
     </div><!-- /.container -->
 	
 	<div class="container text-center">
-	<a class="btn btn-success btn-lg btn-custom-btm-op" href="event-add.html" role="button">+</a>
-	<a class="btn btn-warning btn-lg btn-custom-btm-op" href="#" role="button">BROWSE</a>
+
 
 
 

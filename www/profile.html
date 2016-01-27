@@ -32,6 +32,21 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      <script>
+        function init(){
+          var name=window.localStorage.getItem("fullname"); //session data test
+          document.getElementById("namebox").innerHTML="<h2>" + name + "</h2>";
+          }
+
+          function logout(){
+                  window.localStorage.setItem("user_id","");
+                    window.localStorage.setItem("username","");
+                    window.localStorage.setItem("password","");
+                    window.localStorage.setItem("fullname","");
+                    window.location="index.html";
+          }
+          </script>
+
   </head>
 
   <body>
@@ -66,12 +81,12 @@
 
       <div class="jumbotron tron-2">
         <div class="pull-left">
-          <img src="http://cdn.phys.org/newman/csz/news/800/2015/kiwibirdgeno.jpg" alt="..." class="img-profile img-responsive img-circle"> 
+          <img src="https://scontent-ord1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/12347762_10156294447950503_6333022648861722268_n.jpg?oh=dfe897ac73f55cd40726e856f9640a1a&amp;oe=57282672" alt="..." class="img-profile img-responsive img-circle"> 
         </div>
         <div class="pull-right">
-          <p>Happy Sunflower</p>
-          <p>Organization</p>
-          <p>Other Info</p>
+          <div id="namebox"></div>
+          <h3>Organization</h3>
+          <h3>Other Info</h3>
         </div>
 
   		<div class="jumbotron tron-body tron-profile">
@@ -100,6 +115,8 @@
 	<div class="container text-center">
 	<a class="btn btn-primary-blue btn-lg btn-custom-btm-op" href="#" type="button">
     UPDATE PROFILE</a>
+    <a class="btn btn-primary-red btn-lg btn-custom-btm-op" href="#" type="button" onClick="logout();">
+    LOG OUT</a>
   </div>
 
 
@@ -112,5 +129,8 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+    init();
+    </script>
   </body>
 </html>
