@@ -73,14 +73,15 @@ var app = {
         console.log('Received Event: ' + id);
     },
     submitLogin: function(){
-        this.openEvents();
-        return;
+        console.log("login attempt");
         var username=document.getElementById("username").value;
         var password=document.getElementById("password").value;
-        var url="https://api.stormpath.com/v1/applications/2XMI4I2m8QIHW4kT54ehq1/loginAttempts";
-        var params="type=basic&value=" + btoa(username + ":" + password);
+        //var url="https://api.stormpath.com/v1/applications/2XMI4I2m8QIHW4kT54ehq1/loginAttempts";
+        var url="http://eventsapp.randomfiles.info/event.asp?action=authenticate";
+        //var params="type=basic&value=" + btoa(username + ":" + password);
+        var params="username=" + username + "&password=" + password;
         console.log("params: " + params);
-        var req = createCORSRequest("POST",url);
+        var req = createCORSRequest("POST",url,true);
 
         if (!req) {
             alert('CORS not supported');
@@ -88,15 +89,26 @@ var app = {
         }
 
         //Send the proper header information along with the request
-        //req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //req.setRequestHeader("Content-length", params.length);
-        //req.setRequestHeader("Connection", "close");
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.setRequestHeader("Content-length", params.length);
+        req.setRequestHeader("Connection", "close");
         
 
         req.onload = function(){
             console.log("Status: " + req.status + " - readyState: " + req.readyState);
             if(req.readyState == 4 && (req.status == 200 || req.status==0)) {
                 console.log("resp: " + req.responseText);
+            
+                var userResponse=JSON.parse(req.responseText);
+                //console.log("user " + userResponse);
+                if (userResponse!=null){
+                    //window.localstorage.setItem("user_id",userResponse[0].user_id);
+                    //window.localstorage.setItem("username",userResponse[0].username);
+                    //window.localstorage.setItem("password",userResponse[0].password);
+                    window.location="landing-events.html";
+                }else{
+                    document.getElementById("loginmessage").innerHTML="Invalid username or password!";
+                }
             }
         };
         req.send(params);
