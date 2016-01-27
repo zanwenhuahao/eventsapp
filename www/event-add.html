@@ -72,8 +72,8 @@
           var description=document.getElementById("description").value;
           var start_time=document.getElementById("start_time").value;
           var end_time=document.getElementById("end_time").value;
-          console.log("add + associate event");
-          var url="http://eventsapp.randomfiles.info/event.asp?action=addeventandassociate&event_name=" + name + "&location=" + location + "&description=" + description + "&start_time=" + start_time + "&end_time=" + end_time + "&userId=" & user_id;
+          console.log("add + associate event (x)");
+          var url="http://eventsapp.randomfiles.info/event.asp?action=addeventx&event_name=" + name + "&location=" + location + "&description=" + description + "&start_time=" + start_time + "&end_time=" + end_time + "&userId=" + user_id;
         var req = createCORSRequest("GET",url);
 
         if (!req) {
@@ -91,17 +91,20 @@
             console.log("Status: " + req.status + " - readyState: " + req.readyState);
             if(req.readyState == 4 && (req.status == 200 || req.status==0)) {
                 console.log("create resp: " + req.responseText);
-                var event_id=req.responseText;
-                doAssociate(user_id,event_id);
+                window.location="landing-events.html";
+                //var event_id=req.responseText;
+                //doAssociate(user_id,event_id);
             }
         };
         req.send();
       }
 
+      /*
+
       function doAssociate(user_id,event_id){
         console.log("associate event u=" + user_id + " e=" + event_id);
 
-          var url2="http://eventsapp.randomfiles.info/event.asp?action=eventuserassociate&userID="+ user_id + "&eventID=" & event_id;
+          var url2="http://eventsapp.randomfiles.info/event.asp?action=eventuserassociate&userID="+ user_id + "&eventID=" + event_id;
         var req2 = createCORSRequest("GET",url2);
 
         if (!req2) {
@@ -124,7 +127,7 @@
             }
         };
         req2.send();
-      }
+      }*/
 
     </script>
 
