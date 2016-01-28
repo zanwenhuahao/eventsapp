@@ -2,10 +2,11 @@ body
 {
 	background-color: #f2f2f2 !important;
 	padding-bottom: 5%;
+	line-height:20px;
 }
 .btn
 {
-	margin: 5px;
+	margin: 1px;
 }
 
 .btn.btn-primary
@@ -30,6 +31,17 @@ body
 .btn.btn-primary-blue
 {
 	background-color: #66a3ff;
+	border: none;
+	color: #eee;
+	font-weight: bold;
+	/*padding-left: 20px;
+	padding-right: 20px;*/
+	width:90%;
+
+}
+.btn.btn-primary-red
+{
+	background-color: #ff0000;
 	border: none;
 	color: #eee;
 	font-weight: bold;
@@ -68,8 +80,8 @@ body
 /*This img-circle sizing is a very ghetto px hack, needs changed */
 .img-circle.img-profile
 {
-	height: 200px;
-	width:200px;
+	height: 60px;
+	width: 60px;
 }
 
 /*-------Ghetto hack above--------*/
