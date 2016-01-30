@@ -27,21 +27,22 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+         <link rel="stylesheet" type="text/css" href="css/mystyles.css" />
         <title>Healthy Active Living</title>
     </head>
     <body>
         <div class="app">
             <div id="startscreen">
-                <h1>Welcome</h1>
+                <h1 class="font-bold">Healthy Active Living ISL-Qatar</h1>
                 <div id="deviceready" class="blink">
                     <p class="event listening">Connecting to Device</p>
                     <p class="event received">Login</p>
                 </div>
                 <div id="login">
                     <form id="loginform" onSubmit="app.submitLogin();return false;">
-                        Username: <input type="text" name="username" id="username"><br/>
-                        Password: <input type="password" name="password" id="password"><br/>
-                        <input type="submit" value="Log In">
+                        <span class="font-bold">Username:</span><br/> <input type="text" name="username" id="username"><br/>
+                        <span class="font-bold">Password:</span><br/> <input type="password" name="password" id="password"><br/>
+                        <button class="btn btn-success btn-lg btn-custom-btm-op" input type="submit" value="Log In">Log In</button>
                         <div id="loginmessage"></div>
                     </form>
                 </div>
