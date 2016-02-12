@@ -1,4 +1,4 @@
-body
+body.non-login-body
 {
 	background-color: #f2f2f2 !important;
 	padding-bottom: 5%;
@@ -63,6 +63,12 @@ body
 	width: 45%;
 }
 
+.namebox-info h3
+{
+	font-size: 14px !important;
+	margin: 5px 0px 5px 0px;
+}
+
 .jumbotron.tron-2
 {
 	background-color: transparent;
@@ -76,12 +82,15 @@ body
 .jumbotron.tron-body.tron-profile
 {
 	clear:both;
+	margin: 1% 0 0 0 !important;
+	padding: 2% 2% 2% 2% ;
 }
 /*This img-circle sizing is a very ghetto px hack, needs changed */
 .img-circle.img-profile
 {
-	height: 60px;
-	width: 60px;
+	height: 110px;
+	width: 110px;
+	margin-bottom: 10%;
 }
 
 /*-------Ghetto hack above--------*/
@@ -89,4 +98,9 @@ body
 {
 	font-weight:bold;
 	color: #66a3ff;
+}
+
+.font-profile-content
+{
+	font-size:12px !important;
 }
