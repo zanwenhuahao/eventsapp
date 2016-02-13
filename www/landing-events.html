@@ -85,8 +85,30 @@
                 for(var i = 0; i < eventsResponse.length; i++) {
                     document.getElementById("events").innerHTML += 
                     "<p class=\"lead\">Event: " +  eventsResponse[i].event_name + " <br/> " + eventsResponse[i].start_time + " - " +
-                    eventsResponse[i].end_time + " </p>";
+                    eventsResponse[i].end_time + 
+                    " <a href='javascript:deleteEvent(" + user_id + "," + eventsResponse[i].event_id + ");'>Delete</a> </p>";
                 }
+
+            }
+        };
+        req.send();
+      }
+
+      function deleteEvent(user_id, event_id){
+          var url="http://eventsapp.randomfiles.info/event.asp?action=eventuserdisassociate&userid=" + user_id + "&eventid=" + event_id;
+        var req = createCORSRequest("GET",url);
+
+        if (!req) {
+            alert('CORS not supported');
+            return;
+        }
+
+        req.onload = function(){
+            console.log("Disassociate Status: " + req.status + " - readyState: " + req.readyState);
+            if(req.readyState == 4 && (req.status == 200 || req.status==0)) {
+                console.log("resp: " + req.responseText);
+
+                location.reload();
 
             }
         };
